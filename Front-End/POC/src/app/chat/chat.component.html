@@ -1,0 +1,40 @@
+<body>
+  <div class="title-image-container">
+    Chat With Files
+    <img src="/assets/doc_search.png" alt="Image" class="drop-area-image">
+  </div>
+  <div class="centered-container">
+    <div class="chat-container">
+      <div class="file-upload-container">
+        <app-files></app-files>
+      </div>
+      <div class="chat-messages-container">
+        <div class="messages-container">
+          <div class="messages">
+            <div *ngIf="!messages.length" class="placeholder-text">
+              ask a question about your document
+            </div>
+            <div *ngFor="let message of messages" [class]="'message ' + message.sender">
+              <div class="message-bubble">
+                {{ message.text }}
+              </div>
+            </div>
+            <div *ngIf="isLoading" class="loading-indicator">
+              <mat-spinner diameter="35"></mat-spinner>
+              <span>Waiting for response...</span>
+            </div>
+          </div>
+        </div>
+        <div class="input-area">
+          <mat-form-field appearance="fill" class="message-input">
+            <mat-label>Type a message</mat-label>
+            <input matInput [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" [disabled]="isLoading" placeholder="ask a question">
+          </mat-form-field>
+          <button mat-fab color="primary" (click)="sendMessage()" [disabled]="isLoading">
+            <mat-icon>send</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

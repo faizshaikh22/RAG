@@ -1,0 +1,11 @@
+<div class="upload-container">
+  <input type="file" (change)="onChangeFile($event)" style="display: none;" #fileInput>
+  <button mat-raised-button color="primary" (click)="fileInput.click()">Upload File</button>
+</div>
+
+<div class="drop-area" (drop)="onDrop($event)" (dragover)="onDragOver($event)" (click)="fileInput.click()">
+  <div class="drop-area-content">
+    <img src="/assets/file-icon.png" alt="Image" class="drop-area-image">
+    <p>Drop files here</p>
+  </div>
+</div>
