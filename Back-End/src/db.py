@@ -1,6 +1,9 @@
 import os
+from dotenv import load_dotenv
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_community.vectorstores import Chroma
+
+load_dotenv()
 
 class DataBase:
     GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
